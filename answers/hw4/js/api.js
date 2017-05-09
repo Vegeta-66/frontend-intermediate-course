@@ -31,8 +31,20 @@ function error(xhr, ajaxOptions, thrownError){
 }
 
 function addItem(stream, count){
-
-  var appendString = "<div class='view-item-col'><div class='box-animation'><img src='{0}' class='preview' alt='preview'><div class='detial-container'><img src='{1}' class='icon' alt='icon'><div class='info'><span class='chanel'>{2}</span><span class='name'>{3}</span></div></div></div></div>"
+  //`<div class=view-item-col'><div class='box-animation'><img src='{0}' class='preview' alt='preview'><div class='detial-container'><img src='{1}' class='icon' alt='icon'><div class='info'><span class='chanel'>{2}</span><span class='name'>{3}</span></div></div></div></div>`
+  var appendString = `
+    <div class="view-item-col">
+      <div class="box-animation">
+        <img src="{0}" class="preview" alt="preview">
+        <div class="detial-container">
+          <img src="{1}" class="icon" alt="icon">
+          <div class="info">
+            <span class="chanel">{2}</span>
+            <span class="name">{3}</span>
+          </div>
+        </div>
+      </div>
+    </div>`
     .format(
       stream.preview.medium,
       stream.channel.logo,
@@ -45,6 +57,7 @@ function addItem(stream, count){
   }
   //console.log("count:{0}, row{1}".format(count, rowNum));
   $("#"+rowNum).append(appendString);
+  console.log();
 }
 
 //擴充 string format function
