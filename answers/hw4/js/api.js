@@ -35,40 +35,21 @@ function addItem(stream, count){
   var appendString = `
     <div class="view-item-col">
       <div class="box-animation">
-        <img src="{0}" class="preview" alt="preview">
+        <img src="${stream.preview.medium}" class="preview" alt="preview">
         <div class="detial-container">
-          <img src="{1}" class="icon" alt="icon">
+          <img src="${stream.channel.logo}" class="icon" alt="icon">
           <div class="info">
-            <span class="chanel">{2}</span>
-            <span class="name">{3}</span>
+            <span class="chanel">${stream.channel.status}</span>
+            <span class="name">${stream.channel.name}</span>
           </div>
         </div>
       </div>
-    </div>`
-    .format(
-      stream.preview.medium,
-      stream.channel.logo,
-      stream.channel.status,
-      stream.channel.name
-    );
+    </div>`;
   var rowNum = Math.floor(count/3);
   if (count%3 == 0){
-    $(".view-container").append("<div class='view-item-row' id='{0}'></div>".format(rowNum));
+    $(".view-container").append(`<div class="view-item-row" id="{$rowNum}"></div>`);
   }
   //console.log("count:{0}, row{1}".format(count, rowNum));
   $("#"+rowNum).append(appendString);
   console.log();
-}
-
-//擴充 string format function
-if (!String.prototype.format) {
-  String.prototype.format = function() {
-    var args = arguments;
-    return this.replace(/{(\d+)}/g, function(match, number) {
-      return typeof args[number] != 'undefined'
-        ? args[number]
-        : match
-      ;
-    });
-  };
 }
