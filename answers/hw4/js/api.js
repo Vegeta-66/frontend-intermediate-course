@@ -47,7 +47,7 @@ function addItem(stream, count){
     </div>`;
   var rowNum = Math.floor(count/3);
   if (count%3 == 0){
-    $(".view-container").append(`<div class="view-item-row" id="{$rowNum}"></div>`);
+    $(".view-container").append(`<div class="view-item-row" id="${rowNum}"></div>`);
   }
   //console.log("count:{0}, row{1}".format(count, rowNum));
   $("#"+rowNum).append(appendString);
