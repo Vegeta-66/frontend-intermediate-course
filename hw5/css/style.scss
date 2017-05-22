@@ -1,0 +1,107 @@
+//variable
+$default-text-color: rgb(200, 200, 200);
+$black: rgb(0, 0, 0);
+
+//size
+$defualt-page-width: 1000px;
+$default-box-width: 300px;
+
+//mixin
+@mixin transparent-white($ratio) {
+  background-color: rgba(0, 0, 0, $ratio);
+}
+@mixin transition-duration($sec) {
+  -webkit-transition-duration: $sec;
+          transition-duration: $sec;
+}
+@mixin transition() {
+  //transition-property:
+}
+@mixin align-item($type) {
+  -webkit-box-align: $type;
+     -ms-flex-align: $type;
+        align-items: $type;
+}
+@mixin filter-brightness($degree) {
+  -webkit-filter: brightness($degree);
+          filter: brightness($degree);
+}
+//mix end
+
+* {
+  box-sizing: border-box;
+  color: $default-text-color;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-attachment: fixed;
+  background-image: url('../../img/bg-default.jpg');
+}
+
+.background-cover {
+  @include transparent-white(.5);
+  height: 100%;
+  position: relative;
+}
+
+.view-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.view-item-row {
+  margin: 20px auto;
+  width: $defualt-page-width;
+}
+
+.view-item-col {
+  display: inline-block;
+  height: 150px;
+  margin-left: 20px;
+  width: $default-box-width;
+}
+
+.box-animation {
+  transition: box-shadow .5s, filter .5s;
+
+  &:hover {
+    @include filter-brightness(1.5);
+    box-shadow: 0 0 30px $black;
+    cursor: pointer;
+  }
+}
+
+.detial-container {
+  @include transparent-white(.6);
+  @include align-item(center);
+  display: flex;
+  height: 60px;
+  width: $default-box-width;
+}
+
+.preview {
+  display: flex;
+  height: 180px;
+  width: $default-box-width;
+}
+
+.icon {
+  border-radius: 50%;
+  height: 40px;
+  margin: 10px;
+  width: 40px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+}
+
+.chanel{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
